@@ -24,7 +24,7 @@ One incorrect suggestion the AI made was that the secret was exposed in the debu
 
 did functional testing to see after I changed the code if the hint was to guess lower after you guessed too high of a number. Basically testing the app out myself for edge cases. 
 
-I wrote tests using pytest and one of the tests it came up with was: 
+I wrote tests using pytest and one of the tests it came up with was to test if it was giving the correct hints ie guess lower or guess higher. the AI was able to implement the tests. I reviewed them to check any bugs and then ran them to make sure they all ran. 
 
 The AI designed the pytests tests and also gave explanatations of each test. 
 
@@ -32,19 +32,17 @@ The AI designed the pytests tests and also gave explanatations of each test.
 
 ## 4. What did you learn about Streamlit and state?
 
+The secret was being passed as a string instead of an integer which caused the
+string comparison to be incorrect and evaluate to the wrong thing. 
 
+When you interact with a Streamlit app the script reruns but a container called session state remembers the data between reruns which allows you to persist some data. 
 
-
-
-
-- In your own words, explain why the secret number kept changing in the original app.
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-- What change did you make that finally gave the game a stable secret number?
+To make the game have a stable secret we removed this line of code which was converting the secret
+into a string: secret = str(st.session_state.secret)
 
 ---
 
 ## 5. Looking ahead: your developer habits
-
 
 I think learning good prompts to ask Claude so it can get to the bottom of an issue quicker is a good learning. One thing could be to metaprompt or ask the AI what a good prompt for the project could be.
 
